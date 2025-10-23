@@ -1,0 +1,273 @@
+{% extends 'Shared/base.html' %}
+{% load static %}
+
+{% block title %}Registrar Paciente - Sistema Obstétrico V2{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">
+                <i class="bi bi-person-heart text-danger"></i>
+                Registrar Nueva Paciente
+            </h2>
+            <p class="text-muted mb-0">Ingrese los datos de la paciente obstétrica al sistema</p>
+        </div>
+        <a href="/admin/pacientes/paciente/" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Volver al Listado
+        </a>
+    </div>
+
+    <div class="row">
+        <!-- Formulario Principal -->
+        <div class="col-lg-8 mb-4">
+            
+            <!-- Card: Información de Paciente -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+                    <h5 class="mb-0">
+                        <i class="bi bi-person-heart"></i>
+                        Información de la Paciente
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" novalidate class="needs-validation">
+                        {% csrf_token %}
+                        
+                        <!-- Persona -->
+                        <div class="mb-4">
+                            <label for="id_persona" class="form-label fw-bold">
+                                <i class="bi bi-person-check"></i> Persona <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select form-select-lg" id="id_persona" name="persona" required>
+                                <option value="">-- Seleccione una persona --</option>
+                                <!-- Las personas se cargarán desde el formulario Django -->
+                            </select>
+                            <small class="text-muted">Seleccione la persona a registrar como paciente</small>
+                        </div>
+
+                        <!-- Número de Ficha -->
+                        <div class="mb-4">
+                            <label for="id_numero_ficha" class="form-label fw-bold">
+                                <i class="bi bi-file-text"></i> Número de Ficha <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="id_numero_ficha" 
+                                   name="numero_ficha" placeholder="OB-2025-0001" required>
+                            <small class="text-muted">Identificador único de la ficha obstétrica</small>
+                        </div>
+
+                        <!-- Antecedentes Obstétricos -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="bi bi-plus-circle text-info"></i>
+                                Antecedentes Obstétricos
+                            </h6>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_embarazos_previos" class="form-label">
+                                        Embarazos Previos
+                                    </label>
+                                    <input type="number" class="form-control" id="id_embarazos_previos" 
+                                           name="embarazos_previos" min="0" value="0">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_partos" class="form-label">
+                                        Partos Anteriores
+                                    </label>
+                                    <input type="number" class="form-control" id="id_partos" 
+                                           name="partos" min="0" value="0">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_abortos" class="form-label">
+                                        Abortos Anteriores
+                                    </label>
+                                    <input type="number" class="form-control" id="id_abortos" 
+                                           name="abortos" min="0" value="0">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_cesarea" class="form-label">
+                                        Cesáreas Previas
+                                    </label>
+                                    <input type="number" class="form-control" id="id_cesarea" 
+                                           name="cesarea" min="0" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Patologías -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="bi bi-exclamation-triangle text-warning"></i>
+                                Patologías Preexistentes
+                            </h6>
+                            
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="id_hipertension" 
+                                       name="hipertension">
+                                <label class="form-check-label" for="id_hipertension">
+                                    Hipertensión arterial
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="id_diabetes" 
+                                       name="diabetes">
+                                <label class="form-check-label" for="id_diabetes">
+                                    Diabetes mellitus
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="id_diabetes_gestacional" 
+                                       name="diabetes_gestacional">
+                                <label class="form-check-label" for="id_diabetes_gestacional">
+                                    Diabetes gestacional
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                            <a href="/admin/pacientes/paciente/" class="btn btn-lg btn-outline-secondary">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-lg btn-danger">
+                                <i class="bi bi-check-circle-fill"></i> Guardar Paciente
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Panel Lateral: Información Útil -->
+        <div class="col-lg-4 mb-4">
+            
+            <!-- Card: Información -->
+            <div class="card shadow-sm border-info mb-4">
+                <div class="card-header" style="background: linear-gradient(135deg, #0dcaf0 0%, #0ba5e9 100%);">
+                    <h5 class="mb-0">
+                        <i class="bi bi-info-circle-fill"></i>
+                        Información Importante
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        <strong>✓ Requisitos:</strong><br>
+                        <small>La persona debe estar registrada en el sistema y tener una admisión activa.</small>
+                    </p>
+                    <p class="mb-3">
+                        <strong>✓ Edad válida:</strong><br>
+                        <small>Debe estar entre 12 y 60 años para pacientes obstétricas.</small>
+                    </p>
+                    <p class="mb-0">
+                        <strong>✓ Ficha única:</strong><br>
+                        <small>Cada número de ficha es único e irrepetible en el sistema.</small>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card: Antecedentes -->
+            <div class="card shadow-sm border-warning mb-4">
+                <div class="card-header" style="background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);">
+                    <h5 class="mb-0">
+                        <i class="bi bi-bookmark-heart"></i>
+                        Completar Antecedentes
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        <strong>Es importante completar los antecedentes obstétricos:</strong>
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Número de embarazos</strong>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Partos y abortos</strong>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Cesáreas previas</strong>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Patologías preexistentes</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card: Próximos Pasos -->
+            <div class="card shadow-sm border-success">
+                <div class="card-header" style="background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);">
+                    <h5 class="mb-0">
+                        <i class="bi bi-arrow-right-circle"></i>
+                        Próximo Paso
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        Una vez registrada la paciente, podrá:
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Crear controles prenatales
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Registrar observaciones médicas
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Agregar patologías detectadas
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Registrar procedimientos realizados
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .form-label {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control-lg,
+    .form-select-lg {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+    
+    .form-control-lg:focus,
+    .form-select-lg:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+    }
+</style>
+{% endblock %}

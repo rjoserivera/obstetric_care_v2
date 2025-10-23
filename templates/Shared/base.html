@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema Obstétrico V2{% endblock %}</title>
+    
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f6fa;
+        }
+        
+        .navbar {
+            background: linear-gradient(90deg, #1a252f 0%, #2d3e50 50%, #1a252f 100%);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #ffffff !important;
+            text-transform: uppercase;
+        }
+        
+        .navbar-brand i {
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 1.6rem;
+        }
+        
+        .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-link:hover {
+            color: #3498db !important;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .nav-link.active {
+            color: #3498db !important;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .navbar-toggler {
+            border-color: #3498db;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-info {
+            color: white;
+            font-size: 0.95rem;
+            min-width: 150px;
+            text-align: right;
+        }
+        
+        .user-info small {
+            display: block;
+            opacity: 0.8;
+            font-size: 0.8rem;
+        }
+        
+        .dropdown-menu {
+            min-width: 250px;
+            border: none;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .dropdown-item {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .dropdown-divider {
+            margin: 0.5rem 0;
+        }
+        
+        .main-content {
+            padding: 2rem;
+            min-height: calc(100vh - 100px);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem;
+            border-radius: 12px 12px 0 0;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        
+        .btn {
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5f7a 100%);
+            color: white;
+        }
+        
+        /* NOTIFICACIONES FLOTANTES */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 400px;
+        }
+        
+        .toast {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-left: 4px solid;
+            margin-bottom: 1rem;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(500px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .toast.show {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .toast-body {
+            padding: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Toast de Error */
+        .toast-error {
+            border-left-color: #ef4444;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+        }
+        
+        .toast-error .btn-close {
+            filter: invert(0.2);
+        }
+        
+        /* Toast de Éxito */
+        .toast-success {
+            border-left-color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+        }
+        
+        .toast-success .btn-close {
+            filter: invert(0.1);
+        }
+        
+        /* Toast de Información */
+        .toast-info {
+            border-left-color: #3b82f6;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            color: #1e40af;
+        }
+        
+        .toast-info .btn-close {
+            filter: invert(0.05);
+        }
+        
+        /* Toast de Advertencia */
+        .toast-warning {
+            border-left-color: #f59e0b;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+        }
+        
+        .toast-warning .btn-close {
+            filter: invert(0.2);
+        }
+        
+        .footer {
+            background: linear-gradient(90deg, #1a252f 0%, #2d3e50 50%, #1a252f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 3px solid #3498db;
+        }
+        
+        .table {
+            color: #2c3e50;
+        }
+        
+        .table-hover tbody tr:hover {
+            background-color: #ecf0f1;
+        }
+        
+        .btn-group .btn {
+            padding: 0.4rem 0.6rem;
+            font-size: 0.9rem;
+        }
+        
+        .badge {
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Errores del formulario */
+        .field-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home/">
+                <i class="bi bi-hospital"></i> Hospital Clínico Herminda Martín
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/">
+                            <i class="bi bi-house-fill"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/app/core/personas/">
+                            <i class="bi bi-people-fill"></i> Personas
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle user-menu" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle" style="font-size: 1.4rem; color: #3498db;"></i>
+                            <span class="user-info">
+                                {{ user.first_name|default:user.username }}
+                                <small>Admin</small>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#" disabled>
+                                    <i class="bi bi-person"></i> Mi Perfil
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" disabled>
+                                    <i class="bi bi-gear"></i> Configuración
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item btn-logout" href="{% url 'authentication:logout' %}">
+                                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor de Notificaciones Flotantes -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            {% if messages %}
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        {% for message in messages %}
+                            showToast(
+                                "{{ message|safe }}",
+                                "{{ message.tags|default:'info' }}"
+                            );
+                        {% endfor %}
+                    });
+                </script>
+            {% endif %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="margin: 0; font-weight: 600;">&copy; 2025 Sistema Obstétrico Care V2</p>
+        <small>Hospital Clínico Herminda Martín - Chillán, Ñuble</small>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para Notificaciones Flotantes -->
+    <script>
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.setAttribute('role', 'alert');
+            
+            let icon = 'bi-info-circle';
+            let title = 'Información';
+            
+            if (type === 'error' || type === 'danger') {
+                icon = 'bi-exclamation-circle';
+                title = 'Error';
+            } else if (type === 'success') {
+                icon = 'bi-check-circle';
+                title = 'Éxito';
+            } else if (type === 'warning') {
+                icon = 'bi-exclamation-triangle';
+                title = 'Advertencia';
+            }
+            
+            toast.innerHTML = `
+                <div class="toast-body">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div style="display: flex; gap: 0.75rem; flex: 1;">
+                            <i class="bi ${icon}" style="font-size: 1.25rem; margin-top: 0.1rem;"></i>
+                            <div>
+                                <strong>${title}</strong><br>
+                                <span style="font-size: 0.9rem; opacity: 0.9;">${message}</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" style="margin-left: 0.5rem;"></button>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(toast);
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            // Remover el toast después de que desaparezca
+            toast.addEventListener('hidden.bs.toast', function () {
+                toast.remove();
+            });
+        }
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

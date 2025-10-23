@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Gestión Obstétrica</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .badge-custom {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .welcome-box {
+            background: white;
+            margin: 20px;
+            padding: 15px 20px;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .content {
+            flex: 1;
+            padding: 30px 20px;
+        }
+        
+        .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .info-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .info-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .role-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .role-card.medico {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .role-card.matrona {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .role-card.tens {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .role-card.admin {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+        
+        .role-number {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+        
+        .version-info {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>🏥 Sistema de Gestión Obstétrica</h1>
+        <p>Plataforma integral para la gestión de pacientes embarazadas</p>
+        <div class="badges">
+            <span class="badge-custom">✓ Hospital Clínico Herminda Martín</span>
+            <span class="badge-custom">📍 Chillán, Ñuble</span>
+        </div>
+    </div>
+    
+    <!-- Welcome Box -->
+    <div class="welcome-box">
+        <span>👋 ¡Bienvenido, {{ user.first_name|default:user.username }}!</span>
+        <span style="float: right;">Acceso: <strong>{{ user.groups.all|first }}</strong></span>
+    </div>
+    
+    <!-- Content -->
+    <div class="content">
+        <div class="container-fluid">
+            <!-- Información del Sistema -->
+            <div class="info-section">
+                <h3>📊 Información del Sistema</h3>
+                <div class="role-grid">
+                    <div class="role-card">
+                        <div>👥 Personas</div>
+                        <div class="role-number">{{ personas_total }}</div>
+                    </div>
+                    <div class="role-card">
+                        <div>🤰 Pacientes</div>
+                        <div class="role-number">{{ pacientes_activos }}</div>
+                    </div>
+                    <div class="role-card">
+                        <div>📋 Admisiones</div>
+                        <div class="role-number">{{ admisiones_total }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Médico -->
+            <div class="info-section">
+                <h3>👨‍⚕️ Personal Médico</h3>
+                <div class="role-grid">
+                    <div class="role-card medico">
+                        <div>Médicos</div>
+                        <div class="role-number">{{ medicos_total }}</div>
+                    </div>
+                    <div class="role-card matrona">
+                        <div>Matronas</div>
+                        <div class="role-number">{{ matronas_total }}</div>
+                    </div>
+                    <div class="role-card tens">
+                        <div>TENS</div>
+                        <div class="role-number">{{ tens_total }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Version Info -->
+    <div class="version-info">
+        <p>Sistema de Gestión Obstétrica v{{ version }} - Prototipo</p>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

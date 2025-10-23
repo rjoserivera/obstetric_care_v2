@@ -1,0 +1,481 @@
+INFO 2025-10-22 15:29:03,485 autoreload 40468 39676 Watching for file changes with StatReloader
+INFO 2025-10-22 15:30:24,405 autoreload 39072 40128 Watching for file changes with StatReloader
+INFO 2025-10-22 15:31:50,345 autoreload 35044 38460 Watching for file changes with StatReloader
+ERROR 2025-10-22 15:31:51,933 log 35044 41316 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-10-22 15:31:51,938 basehttp 35044 41316 "GET / HTTP/1.1" 500 141905
+INFO 2025-10-22 15:32:20,536 autoreload 35044 38460 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\obstetric_care_v2\urls.py changed, reloading.
+INFO 2025-10-22 15:32:21,157 autoreload 38160 41528 Watching for file changes with StatReloader
+INFO 2025-10-22 15:34:56,216 autoreload 41536 37192 Watching for file changes with StatReloader
+WARNING 2025-10-22 15:34:57,612 log 41536 37960 Not Found: /
+WARNING 2025-10-22 15:34:57,612 basehttp 41536 37960 "GET / HTTP/1.1" 404 3402
+INFO 2025-10-22 15:37:47,544 autoreload 41536 37192 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\obstetric_care_v2\urls.py changed, reloading.
+INFO 2025-10-22 15:37:48,101 autoreload 38344 11612 Watching for file changes with StatReloader
+INFO 2025-10-22 15:37:52,352 basehttp 38344 40896 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 15:37:52,362 basehttp 38344 40896 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 15:37:52,401 basehttp 38344 40896 "GET /home/ HTTP/1.1" 200 20217
+INFO 2025-10-22 15:37:55,849 basehttp 38344 40896 "GET /admin/core/persona/ HTTP/1.1" 200 11178
+INFO 2025-10-22 15:37:55,881 basehttp 38344 40896 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+INFO 2025-10-22 15:37:58,039 basehttp 38344 40896 "GET /home/ HTTP/1.1" 200 20217
+INFO 2025-10-22 15:38:08,026 basehttp 38344 40896 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 15:38:08,034 basehttp 38344 40896 "GET /home/ HTTP/1.1" 200 20217
+INFO 2025-10-22 15:38:11,603 basehttp 38344 40896 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 15:38:11,611 basehttp 38344 40896 "GET /home/ HTTP/1.1" 200 20217
+ERROR 2025-10-22 15:38:22,635 log 38344 40896 Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Imagine Breaker\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\authentication\views.py", line 50, in logout_view
+    return redirect('login')
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+ERROR 2025-10-22 15:38:22,638 basehttp 38344 40896 "GET /logout/ HTTP/1.1" 500 101483
+INFO 2025-10-22 15:39:20,934 autoreload 38344 11612 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\authentication\views.py changed, reloading.
+INFO 2025-10-22 15:39:21,426 autoreload 41316 38504 Watching for file changes with StatReloader
+INFO 2025-10-22 15:40:07,386 autoreload 41308 39592 Watching for file changes with StatReloader
+INFO 2025-10-22 15:40:08,780 basehttp 41308 38964 "GET / HTTP/1.1" 302 0
+ERROR 2025-10-22 15:40:08,818 log 41308 38964 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Imagine Breaker\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\authentication\views.py", line 29, in login_view
+    return render(request, 'authentication/login.html')
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: authentication/login.html
+ERROR 2025-10-22 15:40:08,821 basehttp 41308 38964 "GET /login/ HTTP/1.1" 500 97981
+INFO 2025-10-22 15:41:58,467 autoreload 40240 39044 Watching for file changes with StatReloader
+INFO 2025-10-22 15:42:01,315 basehttp 40240 41288 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 15:42:01,363 basehttp 40240 41288 "GET /login/ HTTP/1.1" 200 19795
+INFO 2025-10-22 15:43:16,220 basehttp 40240 41288 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 15:43:16,262 basehttp 40240 41288 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 15:43:25,334 basehttp 40240 41288 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 15:43:36,654 basehttp 40240 41288 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 15:43:46,333 basehttp 40240 41288 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 15:43:46,342 basehttp 40240 41288 "GET /home/ HTTP/1.1" 200 20533
+WARNING 2025-10-22 15:43:56,323 log 40240 41288 Not Found: /app/admision/admisiones/
+WARNING 2025-10-22 15:43:56,324 basehttp 40240 41288 "GET /app/admision/admisiones/ HTTP/1.1" 404 3635
+INFO 2025-10-22 15:44:01,099 basehttp 40240 41288 "GET /admin/core/persona/add/ HTTP/1.1" 200 16893
+INFO 2025-10-22 15:44:01,131 basehttp 40240 41288 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+INFO 2025-10-22 15:44:02,174 basehttp 40240 41288 "GET /home/ HTTP/1.1" 200 20217
+INFO 2025-10-22 15:44:41,466 basehttp 40240 41288 "GET /admin/core/persona/ HTTP/1.1" 200 11178
+INFO 2025-10-22 15:44:41,502 basehttp 40240 41288 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+WARNING 2025-10-22 15:44:47,538 log 40240 41288 Not Found: /admin/pacientes/paciente/
+WARNING 2025-10-22 15:44:47,539 basehttp 40240 41288 "GET /admin/pacientes/paciente/ HTTP/1.1" 404 6129
+INFO 2025-10-22 15:44:51,716 basehttp 40240 41288 "GET /admin/admision/admision/ HTTP/1.1" 200 11674
+INFO 2025-10-22 15:44:51,751 basehttp 40240 41288 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+WARNING 2025-10-22 15:44:56,119 log 40240 41288 Not Found: /api/
+WARNING 2025-10-22 15:44:56,119 basehttp 40240 41288 "GET /api/ HTTP/1.1" 404 3575
+INFO 2025-10-22 15:45:00,442 basehttp 40240 41288 "GET /admin/core/persona/ HTTP/1.1" 200 11178
+INFO 2025-10-22 15:45:00,473 basehttp 40240 41288 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+INFO 2025-10-22 15:45:01,825 basehttp 40240 41288 "GET /admin/core/persona/add/ HTTP/1.1" 200 16893
+INFO 2025-10-22 15:45:01,856 basehttp 40240 41288 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+INFO 2025-10-22 15:45:04,122 basehttp 40240 41288 "GET /admin/admision/admision/ HTTP/1.1" 200 11674
+INFO 2025-10-22 15:45:04,152 basehttp 40240 41288 "GET /admin/jsi18n/ HTTP/1.1" 200 8212
+INFO 2025-10-22 15:45:20,601 basehttp 40240 41288 "GET /home/ HTTP/1.1" 200 20217
+INFO 2025-10-22 15:45:21,068 basehttp 40240 41288 "GET /app/core/personas/ HTTP/1.1" 200 9560
+ERROR 2025-10-22 15:45:28,293 log 40240 41288 Internal Server Error: /app/core/personas/crear/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/formularios/persona_form.html
+ERROR 2025-10-22 15:45:28,295 basehttp 40240 41288 "GET /app/core/personas/crear/ HTTP/1.1" 500 89240
+ERROR 2025-10-22 15:45:36,688 log 40240 41288 Internal Server Error: /app/core/personas/crear/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/formularios/persona_form.html
+ERROR 2025-10-22 15:45:36,689 basehttp 40240 41288 "GET /app/core/personas/crear/ HTTP/1.1" 500 89240
+INFO 2025-10-22 15:47:56,040 autoreload 42860 36396 Watching for file changes with StatReloader
+INFO 2025-10-22 15:47:57,734 basehttp 42860 41920 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 15:47:57,745 basehttp 42860 41920 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 15:47:57,794 basehttp 42860 41920 "GET /home/ HTTP/1.1" 200 24489
+INFO 2025-10-22 15:48:08,688 basehttp 42860 41920 "GET /app/core/personas/ HTTP/1.1" 200 12845
+ERROR 2025-10-22 15:48:12,453 log 42860 41920 Internal Server Error: /app/core/personas/crear/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/formularios/persona_form.html
+ERROR 2025-10-22 15:48:12,456 basehttp 42860 41920 "GET /app/core/personas/crear/ HTTP/1.1" 500 89227
+INFO 2025-10-22 15:58:58,175 autoreload 42860 36396 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\authentication\views.py changed, reloading.
+INFO 2025-10-22 15:58:58,686 autoreload 42588 43920 Watching for file changes with StatReloader
+INFO 2025-10-22 15:59:06,077 basehttp 42588 43076 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 15:59:06,088 basehttp 42588 43076 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 15:59:06,101 basehttp 42588 43076 "GET /home/ HTTP/1.1" 200 24489
+INFO 2025-10-22 16:02:03,267 autoreload 40324 33028 Watching for file changes with StatReloader
+INFO 2025-10-22 16:02:04,802 basehttp 40324 40716 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:02:04,812 basehttp 40324 40716 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:02:04,837 basehttp 40324 40716 "GET /home/ HTTP/1.1" 200 25814
+INFO 2025-10-22 16:02:15,955 basehttp 40324 40716 "GET /app/core/personas/ HTTP/1.1" 200 12845
+ERROR 2025-10-22 16:02:17,368 log 40324 40716 Internal Server Error: /app/core/personas/crear/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/formularios/persona_form.html
+ERROR 2025-10-22 16:02:17,371 basehttp 40324 40716 "GET /app/core/personas/crear/ HTTP/1.1" 500 89240
+INFO 2025-10-22 16:05:07,893 autoreload 41456 23608 Watching for file changes with StatReloader
+INFO 2025-10-22 16:05:15,183 basehttp 41456 36396 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:05:15,194 basehttp 41456 36396 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:05:15,210 basehttp 41456 36396 "GET /home/ HTTP/1.1" 200 25814
+INFO 2025-10-22 16:05:29,239 basehttp 41456 36396 "GET /app/core/personas/crear/ HTTP/1.1" 200 20006
+INFO 2025-10-22 16:09:00,009 autoreload 41456 23608 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\forms.py changed, reloading.
+INFO 2025-10-22 16:09:00,508 autoreload 44044 37636 Watching for file changes with StatReloader
+INFO 2025-10-22 16:11:28,371 autoreload 41444 43296 Watching for file changes with StatReloader
+INFO 2025-10-22 16:11:29,869 basehttp 41444 41656 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:11:29,885 basehttp 41444 41656 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 16:11:37,817 basehttp 41444 41656 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 16:11:48,769 basehttp 41444 41656 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 16:12:00,539 basehttp 41444 41656 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 16:13:30,206 autoreload 27820 42800 Watching for file changes with StatReloader
+INFO 2025-10-22 16:13:32,159 basehttp 27820 42288 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:13:32,172 basehttp 27820 42288 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 16:13:39,780 basehttp 27820 42288 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:13:39,791 basehttp 27820 42288 "GET /home/ HTTP/1.1" 200 26130
+INFO 2025-10-22 16:13:54,917 basehttp 27820 42288 "GET /app/core/personas/crear/ HTTP/1.1" 200 20006
+INFO 2025-10-22 16:14:00,372 basehttp 27820 42288 "POST /app/core/personas/crear/ HTTP/1.1" 200 20768
+INFO 2025-10-22 16:17:52,066 autoreload 27820 42800 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py changed, reloading.
+INFO 2025-10-22 16:17:52,561 autoreload 38484 44400 Watching for file changes with StatReloader
+INFO 2025-10-22 16:18:09,187 autoreload 38484 44400 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py changed, reloading.
+INFO 2025-10-22 16:18:09,647 autoreload 43944 43568 Watching for file changes with StatReloader
+INFO 2025-10-22 16:18:24,301 autoreload 43844 42988 Watching for file changes with StatReloader
+INFO 2025-10-22 16:19:04,500 autoreload 43844 42988 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\urls.py changed, reloading.
+INFO 2025-10-22 16:19:04,967 autoreload 40768 44180 Watching for file changes with StatReloader
+INFO 2025-10-22 16:19:13,605 autoreload 44796 44672 Watching for file changes with StatReloader
+INFO 2025-10-22 16:19:15,590 basehttp 44796 25568 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:19:15,601 basehttp 44796 25568 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:19:15,654 basehttp 44796 25568 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:20:43,154 basehttp 44796 40772 "GET /app/core/personas/crear/ HTTP/1.1" 200 23460
+INFO 2025-10-22 16:23:04,885 basehttp 44796 40772 "POST /app/core/personas/crear/ HTTP/1.1" 200 27006
+INFO 2025-10-22 16:25:51,901 basehttp 44796 40772 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:25:55,087 basehttp 44796 40772 "GET /app/core/personas/crear/ HTTP/1.1" 200 24929
+INFO 2025-10-22 16:27:09,899 basehttp 44796 40772 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:27:09,913 basehttp 44796 40772 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:27:09,924 basehttp 44796 40772 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:27:12,546 basehttp 44796 40772 "GET /app/core/personas/crear/ HTTP/1.1" 200 23117
+INFO 2025-10-22 16:27:51,684 basehttp 44796 40772 "POST /app/core/personas/crear/ HTTP/1.1" 200 24576
+INFO 2025-10-22 16:30:42,075 autoreload 46052 29192 Watching for file changes with StatReloader
+INFO 2025-10-22 16:30:43,126 basehttp 46052 37436 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:30:43,137 basehttp 46052 37436 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:30:43,150 basehttp 46052 37436 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:30:45,120 basehttp 46052 37436 "GET /app/core/personas/crear/ HTTP/1.1" 200 27901
+INFO 2025-10-22 16:32:43,744 basehttp 46052 37436 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:32:43,759 basehttp 46052 37436 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:32:43,771 basehttp 46052 37436 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:32:46,444 basehttp 46052 37436 "GET /app/core/personas/crear/ HTTP/1.1" 200 28141
+INFO 2025-10-22 16:33:26,322 basehttp 46052 37436 "POST /app/core/personas/crear/ HTTP/1.1" 200 29600
+INFO 2025-10-22 16:33:54,456 basehttp 46052 37436 "POST /app/core/personas/crear/ HTTP/1.1" 200 29600
+INFO 2025-10-22 16:34:58,895 basehttp 46052 37436 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:35:01,423 basehttp 46052 37436 "GET /app/core/personas/ HTTP/1.1" 200 17421
+INFO 2025-10-22 16:37:48,938 autoreload 46052 29192 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py changed, reloading.
+INFO 2025-10-22 16:37:49,433 autoreload 42304 46656 Watching for file changes with StatReloader
+INFO 2025-10-22 16:37:59,675 autoreload 40876 40316 Watching for file changes with StatReloader
+INFO 2025-10-22 16:38:01,809 basehttp 40876 40180 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:38:01,819 basehttp 40876 40180 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:38:01,834 basehttp 40876 40180 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:38:05,300 basehttp 40876 40180 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 16:38:40,338 basehttp 40876 40180 "POST /app/core/personas/crear/ HTTP/1.1" 200 29148
+INFO 2025-10-22 16:40:08,825 autoreload 40876 40316 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py changed, reloading.
+INFO 2025-10-22 16:40:09,353 autoreload 46164 43776 Watching for file changes with StatReloader
+INFO 2025-10-22 16:40:16,898 basehttp 46164 43020 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:40:16,908 basehttp 46164 43020 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:40:16,921 basehttp 46164 43020 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 16:40:19,080 basehttp 46164 43020 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 16:40:40,985 basehttp 46164 43020 "POST /app/core/personas/crear/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:40:41,004 basehttp 46164 43020 "GET /app/core/personas/ HTTP/1.1" 200 20371
+INFO 2025-10-22 16:44:30,032 basehttp 46164 43020 "GET /app/core/personas/ HTTP/1.1" 200 20945
+INFO 2025-10-22 16:46:06,390 autoreload 46164 43776 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\models.py changed, reloading.
+INFO 2025-10-22 16:46:07,011 autoreload 45368 45064 Watching for file changes with StatReloader
+INFO 2025-10-22 16:48:13,832 autoreload 35432 47048 Watching for file changes with StatReloader
+INFO 2025-10-22 16:48:15,200 basehttp 35432 44548 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:48:15,216 basehttp 35432 44548 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 16:48:15,257 basehttp 35432 44548 "GET /static/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-10-22 16:48:22,931 basehttp 35432 44548 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 16:48:35,129 basehttp 35432 44548 "POST /login/ HTTP/1.1" 200 9896
+INFO 2025-10-22 16:49:36,279 autoreload 46588 42508 Watching for file changes with StatReloader
+INFO 2025-10-22 16:49:37,987 basehttp 46588 46496 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:49:37,998 basehttp 46588 46496 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 16:49:43,975 basehttp 46588 46496 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:49:43,985 basehttp 46588 46496 "GET /home/ HTTP/1.1" 200 29657
+INFO 2025-10-22 16:49:46,270 basehttp 46588 46496 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 16:50:28,315 basehttp 46588 45512 "POST /app/core/personas/crear/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:50:28,344 basehttp 46588 45512 "GET /app/core/personas/ HTTP/1.1" 200 21156
+INFO 2025-10-22 16:51:58,968 autoreload 46588 42508 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\models.py changed, reloading.
+INFO 2025-10-22 16:51:59,535 autoreload 40532 24740 Watching for file changes with StatReloader
+INFO 2025-10-22 16:54:13,696 autoreload 40532 24740 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py changed, reloading.
+INFO 2025-10-22 16:54:14,186 autoreload 44764 47328 Watching for file changes with StatReloader
+INFO 2025-10-22 16:54:29,808 autoreload 44764 47328 C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\urls.py changed, reloading.
+INFO 2025-10-22 16:54:30,315 autoreload 46968 30260 Watching for file changes with StatReloader
+INFO 2025-10-22 16:56:23,979 autoreload 43440 46672 Watching for file changes with StatReloader
+INFO 2025-10-22 16:56:34,665 autoreload 35652 44752 Watching for file changes with StatReloader
+INFO 2025-10-22 16:56:40,650 basehttp 35652 46628 "GET /app/core/personas/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:56:40,661 basehttp 35652 46628 "GET /login/?next=/app/core/personas/ HTTP/1.1" 200 9541
+INFO 2025-10-22 16:57:39,638 autoreload 42332 46580 Watching for file changes with StatReloader
+INFO 2025-10-22 16:57:40,907 basehttp 42332 7700 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 16:57:40,919 basehttp 42332 7700 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 16:57:51,116 basehttp 42332 7700 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:57:51,126 basehttp 42332 7700 "GET /home/ HTTP/1.1" 200 29657
+INFO 2025-10-22 16:57:53,267 basehttp 42332 7700 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 16:58:10,868 basehttp 42332 7700 "POST /app/core/personas/crear/ HTTP/1.1" 302 0
+INFO 2025-10-22 16:58:10,897 basehttp 42332 7700 "GET /app/core/personas/ HTTP/1.1" 200 20871
+ERROR 2025-10-22 16:58:18,035 log 42332 7700 Internal Server Error: /app/core/personas/1/ver/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Imagine Breaker\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py", line 177, in personas_detail
+    return render(request, 'core/data/persona_detail.html', {'persona': persona})
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/data/persona_detail.html
+ERROR 2025-10-22 16:58:18,039 basehttp 42332 7700 "GET /app/core/personas/1/ver/ HTTP/1.1" 500 99651
+INFO 2025-10-22 18:40:50,928 autoreload 28824 25476 Watching for file changes with StatReloader
+INFO 2025-10-22 18:40:53,807 basehttp 28824 14968 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 18:40:53,824 basehttp 28824 14968 "GET /login/ HTTP/1.1" 200 9541
+WARNING 2025-10-22 18:40:54,044 log 28824 14968 Not Found: /favicon.ico
+WARNING 2025-10-22 18:40:54,045 basehttp 28824 14968 "GET /favicon.ico HTTP/1.1" 404 3596
+INFO 2025-10-22 18:41:02,542 basehttp 28824 14968 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 18:41:02,552 basehttp 28824 14968 "GET /home/ HTTP/1.1" 200 29657
+INFO 2025-10-22 18:41:05,859 basehttp 28824 14968 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 18:41:18,185 basehttp 28824 14968 "POST /app/core/personas/crear/ HTTP/1.1" 200 28958
+INFO 2025-10-22 18:41:36,107 basehttp 28824 14968 "POST /app/core/personas/crear/ HTTP/1.1" 302 0
+INFO 2025-10-22 18:41:36,125 basehttp 28824 14968 "GET /app/core/personas/ HTTP/1.1" 200 20871
+ERROR 2025-10-22 18:41:41,321 log 28824 14968 Internal Server Error: /app/core/personas/1/ver/
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\defaulttags.py", line 513, in render
+    max_width = int(self.max_width.resolve(context))
+ValueError: invalid literal for int() with base 10: 'days'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Imagine Breaker\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\core\views.py", line 179, in personas_detail
+    return render(request, 'core/data/persona_detail.html', {'persona': persona})
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Imagine Breaker\Desktop\hospital\obstetric_care_v2\venv\Lib\site-packages\django\template\defaulttags.py", line 517, in render
+    raise TemplateSyntaxError("widthratio final argument must be a number")
+django.template.exceptions.TemplateSyntaxError: widthratio final argument must be a number
+ERROR 2025-10-22 18:41:41,327 basehttp 28824 14968 "GET /app/core/personas/1/ver/ HTTP/1.1" 500 168926
+INFO 2025-10-22 18:41:46,290 basehttp 28824 14968 "GET /app/core/personas/1/editar/ HTTP/1.1" 200 28559
+INFO 2025-10-22 18:41:50,318 basehttp 28824 14968 "GET /app/core/personas/1/eliminar/ HTTP/1.1" 200 16319
+INFO 2025-10-22 18:41:52,592 basehttp 28824 14968 "POST /app/core/personas/1/eliminar/ HTTP/1.1" 302 0
+INFO 2025-10-22 18:41:52,602 basehttp 28824 14968 "GET /app/core/personas/ HTTP/1.1" 200 17261
+INFO 2025-10-22 18:42:02,175 basehttp 28824 14968 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 18:42:22,783 basehttp 28824 14968 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 18:43:05,999 basehttp 28824 14968 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-10-22 18:43:06,006 basehttp 28824 14968 "GET /login/ HTTP/1.1" 200 9897
+INFO 2025-10-22 20:20:31,044 autoreload 4176 13196 Watching for file changes with StatReloader
+INFO 2025-10-22 20:20:33,493 basehttp 4176 54252 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 20:20:33,578 basehttp 4176 54252 "GET /login/ HTTP/1.1" 200 9541
+INFO 2025-10-22 20:20:33,792 basehttp 4176 54316 "GET /static/css/bootstrap.min.css HTTP/1.1" 304 0
+WARNING 2025-10-22 20:20:34,122 log 4176 54352 Not Found: /favicon.ico
+WARNING 2025-10-22 20:20:34,123 basehttp 4176 54352 "GET /favicon.ico HTTP/1.1" 404 3596
+INFO 2025-10-22 20:20:43,393 basehttp 4176 55936 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 20:20:43,516 basehttp 4176 55936 "GET /home/ HTTP/1.1" 200 29657
+INFO 2025-10-22 20:20:52,271 basehttp 4176 55936 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 20:20:54,553 basehttp 4176 55936 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 20:20:56,688 basehttp 4176 55936 "GET /app/core/personas/ HTTP/1.1" 200 16852
+INFO 2025-10-22 20:21:01,299 basehttp 4176 55936 "GET /app/core/personas/crear/ HTTP/1.1" 200 28559
+INFO 2025-10-22 20:21:19,734 basehttp 4176 55936 "POST /app/core/personas/crear/ HTTP/1.1" 200 28968
+INFO 2025-10-22 20:21:24,447 basehttp 4176 55936 "GET /app/core/personas/ HTTP/1.1" 200 16852
+INFO 2025-10-22 20:21:30,131 basehttp 4176 55936 "GET /app/core/personas/?q= HTTP/1.1" 200 16848
+INFO 2025-10-22 20:21:39,572 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:40,702 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:40,929 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:41,125 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:41,330 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:41,519 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:41,727 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:41,963 basehttp 4176 55936 "GET /app/core/personas/?q=18771667-5 HTTP/1.1" 200 16858
+INFO 2025-10-22 20:21:42,594 basehttp 4176 55936 "GET /app/core/personas/ HTTP/1.1" 200 16852
+INFO 2025-10-22 20:24:11,909 basehttp 4176 53260 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 20:40:02,580 autoreload 31092 27176 Watching for file changes with StatReloader
+INFO 2025-10-22 20:40:04,414 basehttp 31092 52024 "GET / HTTP/1.1" 200 5645
+WARNING 2025-10-22 20:40:04,470 basehttp 31092 52024 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 404 1892
+INFO 2025-10-22 20:43:20,092 autoreload 26956 54720 Watching for file changes with StatReloader
+INFO 2025-10-22 20:43:21,663 basehttp 26956 49396 "GET / HTTP/1.1" 302 0
+INFO 2025-10-22 20:43:21,673 basehttp 26956 49396 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-10-22 20:43:21,695 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29268
+INFO 2025-10-22 20:45:03,384 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29057
+INFO 2025-10-22 20:45:04,882 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29057
+INFO 2025-10-22 20:45:05,778 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29057
+INFO 2025-10-22 20:45:06,202 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29057
+INFO 2025-10-22 20:45:06,473 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29057
+INFO 2025-10-22 20:45:06,799 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29057
+INFO 2025-10-22 20:45:17,894 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29288
+INFO 2025-10-22 20:45:18,693 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 29288
+INFO 2025-10-22 20:46:02,122 basehttp 26956 49396 "GET /home/ HTTP/1.1" 200 27167
+INFO 2025-10-22 20:50:59,511 basehttp 26956 57092 "GET /home/ HTTP/1.1" 200 27167

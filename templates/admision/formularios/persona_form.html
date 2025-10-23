@@ -1,0 +1,244 @@
+{% extends 'Shared/base.html' %}
+{% load static %}
+
+{% block title %}Registrar Persona - Sistema Obstétrico V2{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">
+                <i class="bi bi-person-plus-fill text-primary"></i>
+                Registrar Nueva Persona
+            </h2>
+            <p class="text-muted mb-0">Ingrese los datos personales de la nueva persona en el sistema</p>
+        </div>
+        <a href="/admin/core/persona/" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Volver al Listado
+        </a>
+    </div>
+
+    <div class="row">
+        <!-- Formulario Principal -->
+        <div class="col-lg-8 mb-4">
+            
+            <!-- Card: Datos Personales -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-person-badge"></i>
+                        Datos Personales
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" novalidate class="needs-validation">
+                        {% csrf_token %}
+                        
+                        <!-- RUT -->
+                        <div class="mb-3">
+                            <label for="id_Rut" class="form-label fw-bold">
+                                <i class="bi bi-credit-card"></i> RUT <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="id_Rut" name="Rut" 
+                                   placeholder="12345678-9" maxlength="12" required>
+                            <small class="text-muted">Formato: 12345678-9</small>
+                        </div>
+
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="id_Nombre" class="form-label fw-bold">
+                                <i class="bi bi-pencil"></i> Nombre <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="id_Nombre" name="Nombre" 
+                                   placeholder="Juan" required>
+                        </div>
+
+                        <!-- Apellidos -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="id_Apellido_Paterno" class="form-label fw-bold">
+                                    <i class="bi bi-pencil"></i> Apellido Paterno <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control form-control-lg" id="id_Apellido_Paterno" 
+                                       name="Apellido_Paterno" placeholder="García" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="id_Apellido_Materno" class="form-label fw-bold">
+                                    <i class="bi bi-pencil"></i> Apellido Materno <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control form-control-lg" id="id_Apellido_Materno" 
+                                       name="Apellido_Materno" placeholder="López" required>
+                            </div>
+                        </div>
+
+                        <!-- Sexo -->
+                        <div class="mb-3">
+                            <label for="id_Sexo" class="form-label fw-bold">
+                                <i class="bi bi-person-circle"></i> Sexo <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select form-select-lg" id="id_Sexo" name="Sexo" required>
+                                <option value="">-- Seleccione --</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+
+                        <!-- Fecha de Nacimiento -->
+                        <div class="mb-3">
+                            <label for="id_Fecha_nacimiento" class="form-label fw-bold">
+                                <i class="bi bi-calendar-event"></i> Fecha de Nacimiento <span class="text-danger">*</span>
+                            </label>
+                            <input type="date" class="form-control form-control-lg" id="id_Fecha_nacimiento" 
+                                   name="Fecha_nacimiento" required>
+                            <small class="text-muted">La edad debe estar entre 12 y 60 años para pacientes</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Card: Contacto -->
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-telephone-fill"></i>
+                        Información de Contacto
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" novalidate class="needs-validation">
+                        {% csrf_token %}
+                        
+                        <!-- Teléfono -->
+                        <div class="mb-3">
+                            <label for="id_Telefono" class="form-label fw-bold">
+                                <i class="bi bi-telephone"></i> Teléfono
+                            </label>
+                            <input type="tel" class="form-control form-control-lg" id="id_Telefono" name="Telefono" 
+                                   placeholder="+56912345678">
+                        </div>
+
+                        <!-- Dirección -->
+                        <div class="mb-3">
+                            <label for="id_Direccion" class="form-label fw-bold">
+                                <i class="bi bi-geo-alt-fill"></i> Dirección
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="id_Direccion" name="Direccion" 
+                                   placeholder="Calle, número, comuna">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="id_Email" class="form-label fw-bold">
+                                <i class="bi bi-envelope-fill"></i> Email
+                            </label>
+                            <input type="email" class="form-control form-control-lg" id="id_Email" name="Email" 
+                                   placeholder="correo@ejemplo.com">
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a href="/admin/core/persona/" class="btn btn-lg btn-outline-secondary">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-lg btn-primary">
+                                <i class="bi bi-check-circle-fill"></i> Guardar Persona
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Panel Lateral: Información Útil -->
+        <div class="col-lg-4 mb-4">
+            
+            <!-- Card: Información -->
+            <div class="card shadow-sm border-info mb-4">
+                <div class="card-header" style="background: linear-gradient(135deg, #0dcaf0 0%, #0ba5e9 100%);">
+                    <h5 class="mb-0">
+                        <i class="bi bi-info-circle-fill"></i>
+                        Información Importante
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        <strong>✓ Campos requeridos:</strong><br>
+                        <small>Los campos marcados con <span class="text-danger">*</span> son obligatorios.</small>
+                    </p>
+                    <p class="mb-3">
+                        <strong>✓ Validación de RUT:</strong><br>
+                        <small>El RUT debe ser único en el sistema. Se validará el formato chileno.</small>
+                    </p>
+                    <p class="mb-3">
+                        <strong>✓ Edad de Pacientes:</strong><br>
+                        <small>Para registrar como paciente obstétrico, la edad debe estar entre 12 y 60 años.</small>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card: Roles Disponibles -->
+            <div class="card shadow-sm border-success">
+                <div class="card-header" style="background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);">
+                    <h5 class="mb-0">
+                        <i class="bi bi-shield-check"></i>
+                        Próximos Pasos
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        <strong>Después de registrar la persona, podrá:</strong>
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Crear Admisión</strong><br>
+                            <small class="text-muted">Ingresarla al sistema</small>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Registrar como Paciente</strong><br>
+                            <small class="text-muted">Si es madre gestante</small>
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <strong>Asignar Roles</strong><br>
+                            <small class="text-muted">Médico, Matrona, TENS, etc.</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .form-label {
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control-lg,
+    .form-select-lg {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+    
+    .form-control-lg:focus,
+    .form-select-lg:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+    }
+</style>
+{% endblock %}

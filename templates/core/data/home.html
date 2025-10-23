@@ -1,0 +1,232 @@
+{% extends 'Shared/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Sistema Obstétrico V2{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Sección: Bienvenida Personalizada -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div style="background-color: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                <h5 style="color: #2c3e50; margin-bottom: 0.5rem; font-weight: 700;">
+                    <i class="bi bi-hand-thumbs-up" style="color: #667eea;"></i> ¡Bienvenido, {{ user.first_name|default:user.username }}!
+                </h5>
+                <p style="color: #555; margin: 0; font-size: 0.95rem;">
+                    Estás accediendo como <strong>{{ rol|default:"ADMINISTRADOR" }}</strong> con acceso completo al sistema.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ESTADÍSTICAS GENERALES -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <h4 style="color: #2c3e50; margin-bottom: 0.5rem; font-weight: 700;">
+                <i class="bi bi-bar-chart-fill" style="color: #667eea;"></i> Estadísticas Generales
+            </h4>
+            <p style="color: #7f8c8d; font-size: 0.9rem; margin-bottom: 1.5rem;">Resumen del estado actual del sistema</p>
+        </div>
+    </div>
+
+    <!-- Tarjetas de Estadísticas -->
+    <div class="row mb-4">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border: none; color: white; border-radius: 12px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="padding: 2rem; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <i class="bi bi-people-fill" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h2 style="font-weight: 700; font-size: 2.5rem; margin: 0;">0</h2>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem; opacity: 0.95;">Personas Registradas</p>
+                </div>
+                <div style="padding: 0 2rem 1.5rem; text-align: center;">
+                    <small style="opacity: 0.85;">Ej: Total de la clínica</small><br>
+                    <a href="/app/core/personas/" style="color: white; text-decoration: none; font-weight: 600;">Ver detalles →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card" style="background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%); border: none; color: white; border-radius: 12px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="padding: 2rem; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <i class="bi bi-person-heart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h2 style="font-weight: 700; font-size: 2.5rem; margin: 0;">0</h2>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem; opacity: 0.95;">Pacientes Activos</p>
+                </div>
+                <div style="padding: 0 2rem 1.5rem; text-align: center;">
+                    <small style="opacity: 0.85;">
+                        <i class="bi bi-exclamation-circle-fill"></i> Sin requerimieto
+                    </small><br>
+                    <a href="#" style="color: white; text-decoration: none; font-weight: 600;">Ver detalles →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card" style="background: linear-gradient(135deg, #10b981 0%, #065f46 100%); border: none; color: white; border-radius: 12px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="padding: 2rem; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <i class="bi bi-door-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h2 style="font-weight: 700; font-size: 2.5rem; margin: 0;">0</h2>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem; opacity: 0.95;">Admisiones</p>
+                </div>
+                <div style="padding: 0 2rem 1.5rem; text-align: center;">
+                    <small style="opacity: 0.85;">
+                        <i class="bi bi-hourglass-split"></i> Regístros totales
+                    </small><br>
+                    <a href="#" style="color: white; text-decoration: none; font-weight: 600;">Ver detalles →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card" style="background: linear-gradient(135deg, #06b6d4 0%, #0369a1 100%); border: none; color: white; border-radius: 12px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="padding: 2rem; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <i class="bi bi-gear" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <h2 style="font-weight: 700; font-size: 2.5rem; margin: 0;">6</h2>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem; opacity: 0.95;">API Endpoints</p>
+                </div>
+                <div style="padding: 0 2rem 1.5rem; text-align: center;">
+                    <small style="opacity: 0.85;">
+                        <i class="bi bi-wifi2"></i> Activo
+                    </small><br>
+                    <a href="#" style="color: white; text-decoration: none; font-weight: 600;">Ver APIs →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <h4 style="color: #2c3e50; margin-bottom: 0.5rem; font-weight: 700;">
+                <i class="bi bi-lightning-charge" style="color: #f59e0b;"></i> Accesos Rápidos
+            </h4>
+            <p style="color: #7f8c8d; font-size: 0.9rem; margin-bottom: 1.5rem;">Funcionalidades para optimizar el uso del sistema</p>
+        </div>
+    </div>
+
+    <!-- Accesos Rápidos - Grid -->
+    <div class="row mb-4">
+        <!-- Gestión de Personas -->
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card" style="border: none; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; color: white; text-align: center;">
+                    <i class="bi bi-people-fill" style="font-size: 2rem;"></i>
+                    <h5 style="margin-top: 0.5rem; margin-bottom: 0; font-weight: 700;">Gestión de Personas</h5>
+                </div>
+                <div style="padding: 1.5rem; background: white;">
+                    <p style="color: #555; font-size: 0.9rem; margin: 0 0 1rem 0;">Registre y administre todas las personas en el sistema (médicos, matronas, TENS).</p>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <a href="/app/core/personas/" class="btn btn-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; flex: 1;">
+                            <i class="bi bi-eye"></i> Ver Personas
+                        </a>
+                        <a href="/app/core/personas/crear/" class="btn btn-sm" style="background: #f3f4f6; color: #667eea; border: 1px solid #e5e7eb; flex: 1;">
+                            <i class="bi bi-plus"></i> Registrar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gestión de Admisiones -->
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card" style="border: none; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <div style="background: linear-gradient(135deg, #10b981 0%, #065f46 100%); padding: 1.5rem; color: white; text-align: center;">
+                    <i class="bi bi-door-open" style="font-size: 2rem;"></i>
+                    <h5 style="margin-top: 0.5rem; margin-bottom: 0; font-weight: 700;">Gestión de Admisiones</h5>
+                </div>
+                <div style="padding: 1.5rem; background: white;">
+                    <p style="color: #555; font-size: 0.9rem; margin: 0 0 1rem 0;">Registre admisiones de pacientes con previsión de salud y estado actual.</p>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #10b981 0%, #065f46 100%); color: white; border: none; flex: 1;" disabled>
+                            <i class="bi bi-eye"></i> Ver Admisiones
+                        </a>
+                        <a href="#" class="btn btn-sm" style="background: #f3f4f6; color: #10b981; border: 1px solid #e5e7eb; flex: 1;" disabled>
+                            <i class="bi bi-plus"></i> Nueva Admisión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API REST -->
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card" style="border: none; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <div style="background: linear-gradient(135deg, #06b6d4 0%, #0369a1 100%); padding: 1.5rem; color: white; text-align: center;">
+                    <i class="bi bi-wifi2" style="font-size: 2rem;"></i>
+                    <h5 style="margin-top: 0.5rem; margin-bottom: 0; font-weight: 700;">API REST</h5>
+                </div>
+                <div style="padding: 1.5rem; background: white;">
+                    <p style="color: #555; font-size: 0.9rem; margin: 0 0 1rem 0;">Acceda a los endpoints REST integrados con otras aplicaciones.</p>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <a href="#" class="btn btn-sm" style="background: linear-gradient(135deg, #06b6d4 0%, #0369a1 100%); color: white; border: none; flex: 1;" disabled>
+                            <i class="bi bi-code-slash"></i> API Endpoints
+                        </a>
+                        <a href="#" class="btn btn-sm" style="background: #f3f4f6; color: #06b6d4; border: 1px solid #e5e7eb; flex: 1;" disabled>
+                            <i class="bi bi-book"></i> Documentación
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFORMACIÓN DEL SISTEMA -->
+    <div class="row mb-4">
+        <div class="col-lg-6 mb-3">
+            <div class="card" style="border: none; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <div style="background: #444; padding: 1rem; color: white; border-radius: 12px 12px 0 0;">
+                    <i class="bi bi-info-circle"></i> Información del Sistema
+                </div>
+                <div style="padding: 1.5rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <small style="color: #667eea; font-weight: 600;">Institución</small>
+                        <p style="margin: 0.25rem 0 0.75rem 0; color: #2c3e50; font-weight: 600;">Hospital Clínico Herminda Martín</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <small style="color: #667eea; font-weight: 600;">Nombre</small>
+                        <p style="margin: 0.25rem 0 0.75rem 0; color: #2c3e50; font-weight: 600;">Sistema Obstétrico Care</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <small style="color: #667eea; font-weight: 600;">Ciudad</small>
+                        <p style="margin: 0.25rem 0 0.75rem 0; color: #2c3e50; font-weight: 600;">Chillán</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <small style="color: #667eea; font-weight: 600;">Región</small>
+                        <p style="margin: 0.25rem 0 0; color: #2c3e50; font-weight: 600;">Ñuble</p>
+                    </div>
+                    <div>
+                        <small style="color: #667eea; font-weight: 600;">Servicio</small>
+                        <p style="margin: 0.25rem 0 0; color: #2c3e50; font-weight: 600;">Obstetricia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-3">
+            <div class="card" style="border: none; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <div style="background: #f59e0b; padding: 1rem; color: white; border-radius: 12px 12px 0 0;">
+                    <i class="bi bi-check-circle"></i> Estado
+                </div>
+                <div style="padding: 1.5rem; background: #fffbeb;">
+                    <div style="text-align: center;">
+                        <div style="display: inline-block; background: white; padding: 1rem 2rem; border-radius: 12px; margin-bottom: 1rem;">
+                            <i class="bi bi-check-circle-fill" style="font-size: 2.5rem; color: #10b981;"></i>
+                        </div>
+                        <h5 style="color: #2c3e50; margin-bottom: 0.5rem; font-weight: 700;">Servidor Operativo</h5>
+                        <p style="color: #555; font-size: 0.9rem; margin: 0;">El sistema está completamente funcional y disponible para su uso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+</style>
+{% endblock %}

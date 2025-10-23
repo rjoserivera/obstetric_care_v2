@@ -100,5 +100,5 @@ class Tens(models.Model):
         verbose_name = "TENS"
         verbose_name_plural = "TENS"
     
-    def __str__(self):
-        return f"TENS: {self.persona.Nombre} {self.persona.Apellido_Paterno} - {self.Nivel}
+def __str__(self):
+    return f"TENS: {self.persona.Nombre} {self.persona.Apellido_Paterno} - {self.Nivel}"

@@ -1,9 +1,5 @@
 from django.db import models
-from django.core.validators import DateValueError
-################
-# Modelo: Persona
-# Descripción: Registro base de persona con datos fundamentales
-################
+
 class Persona(models.Model):
     SEXO_CHOICES = [
         ('Masculino', 'Masculino'),
@@ -18,6 +14,7 @@ class Persona(models.Model):
     Fecha_nacimiento = models.DateField(verbose_name="Fecha de Nacimiento")
     Telefono = models.CharField(max_length=15, blank=True, verbose_name="Teléfono")
     Direccion = models.CharField(max_length=255, blank=True, verbose_name="Dirección")
+    Comuna = models.CharField(max_length=100, blank=True, verbose_name="Comuna")
     Email = models.EmailField(blank=True, verbose_name="Email")
     Activo = models.BooleanField(default=True, verbose_name="Activo")
     

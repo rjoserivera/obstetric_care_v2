@@ -1,20 +1,17 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+from django.views.decorators.http import require_http_methods
+from django.shortcuts import redirect
 
-################
-# URLs principales
-# Descripción: Rutas principales del proyecto
-################
+def redirect_to_login(request):
+    return redirect('authentication:login')
+
 urlpatterns = [
+    path('', redirect_to_login),  # ← Redirige raíz a login
     path('admin/', admin.site.urls),
-    
-    # API endpoints
-    path('api/core/', include('core.urls')),
-    path('api/admision/', include('admision.urls')),
-    path('api/pacientes/', include('pacientes.urls')),
-    path('api/registros/', include('registros.urls')),
-    path('api/personal/', include('personal.urls')),
-    
-    # DRF Auth
+    path('', include('authentication.urls')),
+    path('home/', TemplateView.as_view(template_name='core/data/home.html'), name='home'),
+    path('app/core/', include('core.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vs(yh$nqcckkn6vhe0hdtq41+(5r$t10@y&h)@v%xv57mwo1i0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,26 +40,31 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #################################
-    # Apps instaladas
+    # Apps de la aplicación
     #################################
     'core',
     'admision',
     'pacientes',
     'registros',
     'personal',
+    'authentication',
+    
+    #################################
+    # Apps de terceros
+    #################################
     'rest_framework',
     'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'obstetric_care_v2.urls'
@@ -71,6 +76,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -85,12 +91,32 @@ WSGI_APPLICATION = 'obstetric_care_v2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+################
+# CONFIGURACIÓN MYSQL
+################
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'obstetric_care_v2',
+        'USER': 'root',
+        'PASSWORD': '12345678',  # Dejar vacío si no tiene contraseña, o agregar la tuya
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
+        'ATOMIC_REQUESTS': True,
     }
 }
+
+# Alternative: Para usar SQLite descomentar esto y comentar DATABASES anterior
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -102,6 +128,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -116,11 +145,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'es-cl'
-
 TIME_ZONE = 'America/Santiago'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -129,20 +155,203 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS Configuration
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-]
 
 # REST Framework Configuration
+################
+# REST FRAMEWORK
+################
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20,
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
 }
+
+
+# CORS Configuration
+################
+# CORS
+################
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:8000',
+    'http://localhost:3000',
+    'http://localhost:8000',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+# Authentication Configuration
+################
+# AUTENTICACIÓN
+################
+LOGIN_URL = 'authentication:login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'authentication:login'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 86400  # 24 horas
+SESSION_COOKIE_SECURE = False  # True en producción con HTTPS
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+
+# Cache Configuration (opcional)
+################
+# CACHÉ
+################
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+
+# Logging Configuration
+################
+# LOGGING
+################
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'django.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+        },
+    },
+}
+
+
+# Email Configuration (opcional para producción)
+################
+# EMAIL
+################
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Desarrollo
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Producción
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your-email@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your-app-password'
+# DEFAULT_FROM_EMAIL = 'your-email@gmail.com'
+
+
+# Seguridad en Desarrollo
+################
+# SEGURIDAD
+################
+# Estos valores deben cambiar en producción
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
+
+# X-Frame-Options para iframe
+X_FRAME_OPTIONS = 'ALLOW-FROM'
+
+# Prevent MIME type sniffing
+SECURE_CONTENT_SECURITY_POLICY = {
+    "default-src": ("'self'",),
+    "script-src": ("'self'", "'unsafe-inline'", "cdn.jsdelivr.net"),
+    "style-src": ("'self'", "'unsafe-inline'", "cdn.jsdelivr.net"),
+    "img-src": ("'self'", "data:", "https:"),
+    "font-src": ("'self'", "data:", "cdn.jsdelivr.net"),
+}
+
+
+# File Upload Configuration
+################
+# ARCHIVOS
+################
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
+FILE_UPLOAD_PERMISSIONS = 0o644
+
+ALLOWED_UPLOAD_EXTENSIONS = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png', '.gif']
+
+
+# Custom Settings
+################
+# CONFIGURACIÓN PERSONALIZADA
+################
+
+# Edad máxima y mínima para pacientes
+MIN_PATIENT_AGE = 12
+MAX_PATIENT_AGE = 60
+
+# Formato de RUT
+RUT_FORMAT = r'^\d{1,2}\.\d{3}\.\d{3}[-]?[0-9K]$'
+
+# Roles de usuario disponibles
+USER_ROLES = [
+    ('admin', 'Administrador'),
+    ('medico', 'Médico'),
+    ('matrona', 'Matrona'),
+    ('tens', 'TENS'),
+    ('administrativo', 'Administrativo'),
+]
+
+# Estados de paciente
+PATIENT_STATUS = [
+    ('activo', 'Activo'),
+    ('inactivo', 'Inactivo'),
+    ('derivado', 'Derivado'),
+    ('egresado', 'Egresado'),
+]
+
+# Previsiones de salud
+HEALTH_INSURANCE = [
+    ('FONASA', 'FONASA'),
+    ('ISAPRE', 'ISAPRE'),
+    ('Privado', 'Privado'),
+    ('Otro', 'Otro'),
+]

@@ -1,0 +1,61 @@
+{% extends 'Shared/base.html' %}
+{% load static %}
+
+{% block title %}Confirmar Eliminación - {{ persona.Nombre }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <a href="{% url 'core:personas_list' %}" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                <i class="bi bi-arrow-left"></i> Volver al listado
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card" style="border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <div class="card-body p-5" style="text-align: center;">
+                    <div style="background: #fee2e2; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: #ef4444;">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-weight: 700;">¿Estás Seguro?</h3>
+                    
+                    <p style="color: #7f8c8d; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                        Estás a punto de eliminar a:
+                    </p>
+
+                    <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h5 style="color: #2c3e50; margin: 0; font-weight: 700;">
+                            {{ persona.Nombre }} {{ persona.Apellido_Paterno }} {{ persona.Apellido_Materno }}
+                        </h5>
+                        <p style="color: #7f8c8d; margin: 0.5rem 0 0 0; font-size: 0.9rem;">
+                            RUT: {{ persona.Rut }}
+                        </p>
+                    </div>
+
+                    <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1rem; border-radius: 6px; margin-bottom: 2rem; text-align: left;">
+                        <p style="color: #991b1b; margin: 0; font-size: 0.9rem; font-weight: 600;">
+                            <i class="bi bi-exclamation-circle"></i> Esta acción es irreversible y no se puede deshacer.
+                        </p>
+                    </div>
+
+                    <form method="POST" style="display: flex; gap: 1rem;">
+                        {% csrf_token %}
+                        
+                        <a href="{% url 'core:personas_list' %}" class="btn btn-lg" style="background: #f3f4f6; color: #2c3e50; border: 1px solid #e5e7eb; font-weight: 600; flex: 1; border-radius: 8px;">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                        
+                        <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%); color: white; font-weight: 600; flex: 1; border-radius: 8px;">
+                            <i class="bi bi-trash"></i> Sí, Eliminar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

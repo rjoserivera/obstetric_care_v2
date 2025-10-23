@@ -1,0 +1,331 @@
+{% extends 'Shared/base.html' %}
+{% load static %}
+
+{% block title %}Registrar Persona{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center;">
+                <h1 style="font-weight: 800; margin-bottom: 0.5rem;">
+                    <i class="bi bi-person-plus-fill"></i> Registrar Nueva Persona
+                </h1>
+                <p style="margin: 0;">Completa los siguientes datos</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <form method="POST" class="needs-validation" novalidate>
+                {% csrf_token %}
+
+                <!-- DATOS PERSONALES -->
+                <div class="card mb-4" style="border: none; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 700; border-radius: 12px 12px 0 0;">
+                        <i class="bi bi-person-fill"></i> Datos Personales
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Fila 1: RUT y Nombre -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">RUT <span class="text-danger">*</span></label>
+                                <input type="text" id="rut_input" name="rut" class="form-control form-control-lg" placeholder="12.345.678-9" required>
+                                <small class="text-muted d-block mt-1">Se formatea automáticamente</small>
+                                <div id="rut_status" style="margin-top: 0.5rem;"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Nombre <span class="text-danger">*</span></label>
+                                <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Juan" required>
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Apellidos -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Apellido Paterno <span class="text-danger">*</span></label>
+                                <input type="text" name="apellido_paterno" class="form-control form-control-lg" placeholder="García" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Apellido Materno</label>
+                                <input type="text" name="apellido_materno" class="form-control form-control-lg" placeholder="López">
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Fecha y Género -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Fecha de Nacimiento <span class="text-danger">*</span></label>
+                                <input type="date" name="fecha_nacimiento" class="form-control form-control-lg" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Género <span class="text-danger">*</span></label>
+                                <select name="genero" class="form-select form-select-lg" required>
+                                    <option value="">Selecciona género</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="O">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Fila 4: Email y Teléfono -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Email</label>
+                                <input type="email" name="email" class="form-control form-control-lg" placeholder="correo@ejemplo.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Teléfono <span class="text-danger">*</span></label>
+                                <input type="tel" name="telefono" class="form-control form-control-lg" placeholder="+56912345678" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOMICILIO -->
+                <div class="card mb-4" style="border: none; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="card-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; font-weight: 700; border-radius: 12px 12px 0 0;">
+                        <i class="bi bi-house-fill"></i> Domicilio
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Fila 1: Dirección y Número -->
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <label class="form-label fw-bold">Dirección <span class="text-danger">*</span></label>
+                                <input type="text" name="direccion" class="form-control form-control-lg" placeholder="Calle principal" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Número</label>
+                                <input type="text" name="numero" class="form-control form-control-lg" placeholder="123">
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Comuna y Región -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Comuna <span class="text-danger">*</span></label>
+                                <input type="text" name="ciudad" class="form-control form-control-lg" placeholder="Chillán" required>
+                                <small class="text-muted d-block mt-1">Ej: Chillán, Chillán Viejo, El Carmen, etc.</small>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Región <span class="text-danger">*</span></label>
+                                <input type="text" name="region" class="form-control form-control-lg" value="Ñuble" disabled style="background-color: #f3f4f6; color: #888;">
+                                <input type="hidden" name="region" value="Ñuble">
+                                <small class="text-muted d-block mt-1">Región predeterminada</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="row mb-4">
+                    <div class="col-lg-12">
+                        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                            <a href="/app/core/personas/" class="btn btn-lg" style="background: #f3f4f6; color: #2c3e50; border: 1px solid #e5e7eb; font-weight: 600;">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600;">
+                                <i class="bi bi-check-circle"></i> Registrar Persona
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INFORMACIÓN -->
+                <div class="alert alert-info" role="alert" style="border-radius: 12px; border: none; background: #dbeafe;">
+                    <h6 class="alert-heading" style="color: #1e40af; font-weight: 700;">
+                        <i class="bi bi-info-circle"></i> Información Importante
+                    </h6>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #1e40af; font-size: 0.9rem;">
+                        <li>Todos los campos con <span class="text-danger">*</span> son obligatorios</li>
+                        <li>El RUT se formatea automáticamente: 12.345.678-9</li>
+                        <li>Se valida que el RUT sea correcto</li>
+                        <li>La región siempre será Ñuble</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-control, .form-select {
+        border: 2px solid #d1d5db;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        color: #2c3e50;
+        background-color: #ffffff;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        background-color: #ffffff;
+        color: #2c3e50;
+    }
+
+    .form-control-lg, .form-select-lg {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    .form-label {
+        margin-bottom: 0.75rem;
+        color: #2c3e50;
+    }
+
+    input:disabled {
+        background-color: #f3f4f6 !important;
+        color: #888 !important;
+        cursor: not-allowed;
+        border-color: #e5e7eb !important;
+    }
+
+    .rut-valid {
+        border-color: #10b981 !important;
+        background-color: #f0fdf4 !important;
+    }
+
+    .rut-invalid {
+        border-color: #ef4444 !important;
+        background-color: #fef2f2 !important;
+    }
+
+    .status-message {
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        display: inline-block;
+    }
+
+    .status-valid {
+        color: #10b981;
+    }
+
+    .status-invalid {
+        color: #ef4444;
+    }
+</style>
+
+<script>
+    // Función para formatear RUT
+    function formatRUT(value) {
+        // Remover todo excepto números y K
+        let cleanRUT = value.replace(/[^0-9K]/gi, '').toUpperCase();
+        
+        if (cleanRUT.length === 0) return '';
+        
+        // RUT chileno: máximo 8 dígitos + 1 verificador = 9 caracteres
+        if (cleanRUT.length > 9) {
+            cleanRUT = cleanRUT.substring(0, 9);
+        }
+        
+        // Separar los dígitos del verificador (último carácter)
+        let digitos = cleanRUT.substring(0, cleanRUT.length - 1);
+        let verificador = cleanRUT.substring(cleanRUT.length - 1);
+        
+        // Formatear los dígitos: X.XXX.XXX o XX.XXX.XXX
+        let formatted = '';
+        
+        if (digitos.length === 7) {
+            // 7 dígitos: X.XXX.XXX
+            formatted = digitos.substring(0, 1) + '.' + 
+                       digitos.substring(1, 4) + '.' + 
+                       digitos.substring(4, 7);
+        } else if (digitos.length === 8) {
+            // 8 dígitos: XX.XXX.XXX
+            formatted = digitos.substring(0, 2) + '.' + 
+                       digitos.substring(2, 5) + '.' + 
+                       digitos.substring(5, 8);
+        } else if (digitos.length < 7) {
+            // Menos de 7: mostrar sin formato
+            formatted = digitos;
+        }
+        
+        // Agregar verificador si existe
+        if (verificador) {
+            formatted += '-' + verificador;
+        }
+        
+        return formatted;
+    }
+
+    // Función para validar RUT (algoritmo del dígito verificador)
+    function validateRUT(rut) {
+        // Remover formato
+        let cleanRUT = rut.replace(/[^0-9K]/gi, '').toUpperCase();
+        
+        if (cleanRUT.length < 8) return false;
+        
+        // Separar número y dígito verificador
+        let number = cleanRUT.substring(0, cleanRUT.length - 1);
+        let verifier = cleanRUT.substring(cleanRUT.length - 1);
+        
+        // Calcular dígito verificador
+        let sum = 0;
+        let multiplier = 2;
+        
+        for (let i = number.length - 1; i >= 0; i--) {
+            sum += parseInt(number[i]) * multiplier;
+            multiplier++;
+            if (multiplier > 7) multiplier = 2;
+        }
+        
+        let remainder = sum % 11;
+        let calculatedVerifier = 11 - remainder;
+        
+        if (calculatedVerifier === 11) {
+            calculatedVerifier = 0;
+        } else if (calculatedVerifier === 10) {
+            calculatedVerifier = 'K';
+        }
+        
+        return calculatedVerifier.toString() === verifier;
+    }
+
+    // Event listener para el input de RUT con debounce
+    document.addEventListener('DOMContentLoaded', function() {
+        const rutInput = document.getElementById('rut_input');
+        const rutStatus = document.getElementById('rut_status');
+        let debounceTimer;
+        
+        rutInput.addEventListener('input', function(e) {
+            let value = e.target.value;
+            let formatted = formatRUT(value);
+            e.target.value = formatted;
+            
+            // Limpiar el timer anterior
+            clearTimeout(debounceTimer);
+            
+            // Establecer nuevo timer (esperar 500ms después de dejar de escribir)
+            debounceTimer = setTimeout(function() {
+                // Validar cuando tiene formato completo
+                if (formatted.length >= 11) { // XX.XXX.XXX-K mínimo
+                    let isValid = validateRUT(formatted);
+                    
+                    if (isValid) {
+                        rutInput.classList.add('rut-valid');
+                        rutInput.classList.remove('rut-invalid');
+                        rutStatus.innerHTML = '<span class="status-message status-valid"><i class="bi bi-check-circle"></i> RUT válido</span>';
+                    } else {
+                        rutInput.classList.add('rut-invalid');
+                        rutInput.classList.remove('rut-valid');
+                        rutStatus.innerHTML = '<span class="status-message status-invalid"><i class="bi bi-exclamation-circle"></i> RUT inválido</span>';
+                    }
+                } else if (formatted.length > 0) {
+                    rutInput.classList.remove('rut-valid', 'rut-invalid');
+                    rutStatus.innerHTML = '<span class="status-message" style="color: #f59e0b;"><i class="bi bi-hourglass-split"></i> Completa el RUT...</span>';
+                } else {
+                    rutInput.classList.remove('rut-valid', 'rut-invalid');
+                    rutStatus.innerHTML = '';
+                }
+            }, 500); // Espera 500ms después de dejar de escribir
+        });
+    });
+</script>
+{% endblock %}

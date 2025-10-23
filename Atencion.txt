@@ -1,1 +1,12 @@
+usuarios 
+admin
+Boccchi
+Tomas216
 
+matrona
+Username: matrona1
+Email: matrona@hospital.cl
+Password: Tomas216
+
+
+python manage.py createsuperuser
